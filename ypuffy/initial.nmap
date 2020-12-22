@@ -1,0 +1,61 @@
+# Nmap 7.60 scan initiated Wed Sep 26 16:12:57 2018 as: nmap -v -sC -sV -oA initial 10.10.10.107
+Nmap scan report for 10.10.10.107
+Host is up (0.038s latency).
+Not shown: 973 closed ports
+PORT      STATE    SERVICE        VERSION
+22/tcp    open     ssh            OpenSSH 7.7 (protocol 2.0)
+| ssh-hostkey: 
+|   2048 2e:19:e6:af:1b:a7:b0:e8:07:2a:2b:11:5d:7b:c6:04 (RSA)
+|   256 dd:0f:6a:2a:53:ee:19:50:d9:e5:e7:81:04:8d:91:b6 (ECDSA)
+|_  256 21:9e:db:bd:e1:78:4d:72:b0:ea:b4:97:fb:7f:af:91 (EdDSA)
+80/tcp    open     http           OpenBSD httpd
+139/tcp   open     netbios-ssn    Samba smbd 3.X - 4.X (workgroup: YPUFFY)
+254/tcp   filtered unknown
+389/tcp   open     ldap           (Anonymous bind OK)
+445/tcp   open     netbios-ssn    Samba smbd 4.7.6 (workgroup: YPUFFY)
+808/tcp   filtered ccproxy-http
+1007/tcp  filtered unknown
+1111/tcp  filtered lmsocialserver
+1121/tcp  filtered rmpp
+1126/tcp  filtered hpvmmdata
+1244/tcp  filtered isbconference1
+1688/tcp  filtered nsjtp-data
+1972/tcp  filtered intersys-cache
+1998/tcp  filtered x25-svc-port
+3052/tcp  filtered powerchute
+3546/tcp  filtered unknown
+3800/tcp  filtered pwgpsi
+3869/tcp  filtered ovsam-mgmt
+3971/tcp  filtered lanrevserver
+4224/tcp  filtered xtell
+7200/tcp  filtered fodms
+9593/tcp  filtered cba8
+10566/tcp filtered unknown
+14000/tcp filtered scotty-ft
+30718/tcp filtered unknown
+44176/tcp filtered unknown
+Service Info: Host: YPUFFY
+
+Host script results:
+| smb-os-discovery: 
+|   OS: Windows 6.1 (Samba 4.7.6)
+|   Computer name: ypuffy
+|   NetBIOS computer name: YPUFFY\x00
+|   Domain name: hackthebox.htb
+|   FQDN: ypuffy.hackthebox.htb
+|_  System time: 2018-09-26T16:13:16-04:00
+| smb-security-mode: 
+|   account_used: <blank>
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb2-security-mode: 
+|   2.02: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2018-09-26 16:13:17
+|_  start_date: 1600-12-31 19:03:58
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Wed Sep 26 16:13:28 2018 -- 1 IP address (1 host up) scanned in 31.73 seconds
